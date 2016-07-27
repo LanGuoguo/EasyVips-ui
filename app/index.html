@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="evuiApp">
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>Easy Vips - 易会员</title>
+
+  <link rel="stylesheet" type="text/css" href="bower_components/semantic-ui/dist/semantic.min.css">
+
+  <style type="text/css">
+  body {
+    background-color: #FFFFFF;
+  }
+  .ui.menu.ev-menu {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  }
+  .ui.menu .item img.logo {
+    margin-right: 1.5em;
+  }
+  .main.ev-container {
+  }
+  .ui.attached.menu.top {
+    border-top: 0;
+    min-height: 60px;
+    background: transparent;
+  }
+  .ui.top.menu, .ui.bottom.segment {
+    border-radius: 0;
+  }
+  .item.sidebar-menu {
+    min-width: 150px;
+    width: 150px;
+    max-width: 150px;
+  }
+  .pushable {
+    overflow: hidden;
+  }
+  .pushable > .ui.sidebar.menu {
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .ui.menu .item.no-before:before {
+    width: 0;
+  }
+  .pusher-container {
+    padding: 25px;
+  }
+  .scrollable-y {
+    overflow-y: auto;
+  }
+  .mt0 {
+    margin-top: 0;
+  }
+  .pt0 {
+    padding-top: 0;
+  }
+  </style>
+
+</head>
+<body ng-controller="mainCtrl">
+  <div class="ui teal inverted borderless menu ev-menu">
+    <div class="ui fluid container">
+      <a href="#" class="header item">
+        <img class="logo" src="images/logo.png">
+        Easy Vips
+      </a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" placeholder="找点儿啥呢">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        <a class="ui item">
+          Guoguo Wang
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui main ev-container">
+
+    <div class="ui top attached menu">
+      <a class="item sidebar-menu">
+        <i class="sidebar icon"></i>
+      </a>
+      <div class="item no-before">
+        <div class="ui breadcrumb">
+          <a class="section">商家服务</a>
+          <div class="divider"> / </div>
+          <div class="active section">{{activeBreadcrumb}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui bottom attached segment pushable">
+      <div class="ui thin left vertical sidebar menu">
+        <a ng-repeat="menu in menus" ng-click="navigate()" href="{{menu.url}}" class="{{menu.active}} item">
+          <i class="{{menu.icon}} icon"></i>
+          {{menu.name}}
+        </a>
+      </div>
+      <div class="pusher">
+        <div class="ui fluid container pusher-container scrollable-y">
+          <div ui-view></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="js/entrance/app.js"></script>
+  <script type="text/javascript" src="js/controllers/index.controller.js"></script>
+
+  <script type="text/javascript" src="bower_components/semantic-ui/dist/semantic.min.js"></script>
+  <script type="text/javascript" src="js/entrance/index.js"></script>
+</body>
+
+</html>
