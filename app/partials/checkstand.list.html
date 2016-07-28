@@ -9,7 +9,7 @@
             <i class="shop icon"></i>
           </div>
         </div>
-        <div class="ui animated fade basic teal button" tabindex="0">
+        <div class="ui animated fade basic teal button" tabindex="0" ng-click="recharge()">
           <div class="visible content">充值</div>
           <div class="hidden content"><i class="add to cart icon"></i></div>
         </div>
@@ -19,139 +19,59 @@
       <div class="column">
         <table class="ui celled table">
           <thead>
-            <tr>
+            <tr class="first">
               <th class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
+                <div class="ui fitted slider checkbox master">
+                  <input type="checkbox" name="list-checkbox">
                   <label></label>
                 </div>
               </th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
+              <th ng-repeat="head in paymentTable.heads">{{head}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr class="list" ng-repeat="list in paymentTable.lists">
               <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
+                <div class="ui fitted slider checkbox child">
+                  <input type="checkbox" name="list-checkbox" class="tr-checkbox" value="{{list.id}}">
                   <label></label>
                 </div>
               </td>
               <td>
-                Cell
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+                {{list.customer}}
               </td>
               <td>
-                Cell
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+                {{list.phone}}
               </td>
               <td>
-                Cell
+                {{list.balances}}
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+              <td>
+                <div class="ui pink label">{{list.expense}}</div>
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+              <td>
+                {{list.deductBalance}}
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+              <td>
+                {{list.cash}}
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
+              <td>
+                {{list.change}}
+              </td>
+              <td>
+                {{list.coupon}}
+              </td>
+              <td>
+                {{list.isVip}}
+              </td>
+              <td>
+                {{list.note}}
+              </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <th colspan="4">
+              <th colspan="11">
                 <div class="ui right floated pagination menu">
                   <a class="icon item">
                     <i class="left chevron icon"></i>
@@ -190,11 +110,11 @@
           <div class="ui card">
 
             <div class="image">
-              <img src="/images/card2.png">
+              <img src="images/card2.png">
             </div>
             <div class="content">
               <div class="right floated meta">8次</div>
-              <img class="ui avatar image" src="/images/avantar.png"> Elliot
+              <img class="ui avatar image" src="images/avantar.png"> Elliot
             </div>
             <div class="content">
               <i class="phone icon"></i>
@@ -205,48 +125,6 @@
               <div class="ui red large circular label">888.00</div>
             </div>
           </div>
-          <!-- <div class="ui internally celled grid">
-            <div class="row">
-              <div class="sixteen wide column">
-                <div class="ui medium image">
-                  <img src="/images/card1.png">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="six wide column">
-                <div class="ui selection list">
-                  <div class="item">
-                    <div class="ui basic label"><i class="user icon"></i>会员</div>
-                  </div>
-                  <div class="item">
-                    <div class="ui basic label"><i class="phone icon"></i>手机</div>
-                  </div>
-                  <div class="item">
-                    <div class="ui red label"><i class="yen icon"></i>&nbsp;余额</div>
-                  </div>
-                </div>
-              </div>
-              <div class="ten wide column">
-                <div class="ui selection list">
-                  <div class="item">
-                    <div class="ui basic label">Star Bucks</div>
-                  </div>
-                  <div class="item">
-                    <div class="ui basic label">12345678901</div>
-                  </div>
-                  <div class="item">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="column">
-                <div class="ui red circular label">888.00</div>
-              </div>
-            </div>
-          </div> -->
         </div>
 
         <a class="ui red right corner label login-switch">

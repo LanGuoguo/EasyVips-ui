@@ -26,136 +26,38 @@
             <tr>
               <th class="collapsing">
                 <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
+                  <input type="checkbox" name="list-checkbox" class="th-checkbox">
                   <label></label>
                 </div>
               </th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
+              <th ng-repeat="head in vipsTable.heads">{{head}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="list in vipsTable.lists">
               <td class="collapsing">
                 <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
+                  <input type="checkbox" name="list-checkbox" class="tr-checkbox">
                   <label></label>
                 </div>
               </td>
               <td>
-                Cell
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+                {{list.customer}}
               </td>
               <td>
-                Cell
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+                {{list.phone}}
               </td>
               <td>
-                Cell
+                <div class="ui red label">{{list.balances}}</div>
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
+              <td>
+                {{list.note}}
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
-            </tr>
-            <tr>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox">
-                  <label></label>
-                </div>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <th colspan="4">
+              <th colspan="5">
                 <div class="ui right floated pagination menu">
                   <a class="icon item">
                     <i class="left chevron icon"></i>

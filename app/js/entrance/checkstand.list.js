@@ -28,4 +28,58 @@
   })
   ;
 
+  $('.first .master.checkbox')
+  .checkbox({
+    // check all children
+    onChecked: function() {
+      var
+        $childCheckbox  = $('tr.list').find('.checkbox.child')
+      ;
+      $childCheckbox.checkbox('check');
+    },
+    // uncheck all children
+    onUnchecked: function() {
+      var
+        $childCheckbox  = $('tr.list').find('.checkbox.child')
+      ;
+      $childCheckbox.checkbox('uncheck');
+    }
+  })
+;
+
+$('tr.list .checkbox.child')
+  .checkbox({
+    // Fire on load to set parent value
+    fireOnInit : true,
+    // Change parent state on each child checkbox change
+    onChange   : function() {
+      var
+        $parentCheckbox = $('.first .master.checkbox'),
+        $checkbox       = $('tr.list .checkbox.child'),
+        allChecked      = true,
+        allUnchecked    = true
+      ;
+      // check to see if all other siblings are checked or unchecked
+      $checkbox.each(function() {
+        if( $(this).checkbox('is checked') ) {
+          allUnchecked = false;
+        }
+        else {
+          allChecked = false;
+        }
+      });
+      // set parent checkbox state, but dont trigger its onChange callback
+      if(allChecked) {
+        $parentCheckbox.checkbox('set checked');
+      }
+      else if(allUnchecked) {
+        $parentCheckbox.checkbox('set unchecked');
+      }
+      else {
+        $parentCheckbox.checkbox('set indeterminate');
+      }
+    }
+  })
+;
+
 })();
