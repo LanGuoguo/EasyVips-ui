@@ -17,77 +17,82 @@
     </div>
     <div class="one column row" style="padding-top: 0;">
       <div class="column">
-        <table class="ui celled table">
-          <thead>
-            <tr class="first">
-              <th class="collapsing">
-                <div class="ui fitted slider checkbox master">
-                  <input type="checkbox" name="list-checkbox">
-                  <label></label>
-                </div>
-              </th>
-              <th ng-repeat="head in paymentTable.heads">{{head}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="list" ng-repeat="list in paymentTable.lists">
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox child">
-                  <input type="checkbox" name="list-checkbox" class="tr-checkbox" value="{{list.id}}">
-                  <label></label>
-                </div>
-              </td>
-              <td>
-                {{list.customer}}
-              </td>
-              <td>
-                {{list.phone}}
-              </td>
-              <td>
-                {{list.balances}}
-              </td>
-              <td>
-                <div class="ui pink label">{{list.expense}}</div>
-              </td>
-              <td>
-                {{list.deductBalance}}
-              </td>
-              <td>
-                {{list.cash}}
-              </td>
-              <td>
-                {{list.change}}
-              </td>
-              <td>
-                {{list.coupon}}
-              </td>
-              <td>
-                {{list.isVip}}
-              </td>
-              <td>
-                {{list.note}}
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="11">
-                <div class="ui right floated pagination menu">
-                  <a class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                  <a class="item">1</a>
-                  <a class="item">2</a>
-                  <a class="item">3</a>
-                  <a class="item">4</a>
-                  <a class="icon item">
-                    <i class="right chevron icon"></i>
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot>
-        </table>
+        <div class="ui fluid container">
+          <table class="ui striped selectable single line celled table">
+            <thead>
+              <tr class="first">
+                <th class="collapsing">
+                  <div class="ui fitted slider checkbox master">
+                    <input type="checkbox" name="list-checkbox">
+                    <label></label>
+                  </div>
+                </th>
+                <th ng-repeat="head in paymentTable.heads">{{head}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="list {{list.selected}}" ng-repeat="list in paymentTable.lists" ng-click="checkTr($event)">
+                <td class="collapsing">
+                  <div class="ui fitted slider checkbox child">
+                    <input type="checkbox" name="list-checkbox" class="tr-checkbox" value="{{list.id}}">
+                    <label></label>
+                  </div>
+                </td>
+                <td>
+                  {{list.customer}}
+                </td>
+                <td>
+                  {{list.phone}}
+                </td>
+                <td>
+                  {{list.balances}}
+                </td>
+                <td>
+                  {{list.consumeTime}}
+                </td>
+                <td>
+                  <div class="ui pink label">{{list.expense}}</div>
+                </td>
+                <td>
+                  {{list.deductBalance}}
+                </td>
+                <td>
+                  {{list.cash}}
+                </td>
+                <td>
+                  {{list.change}}
+                </td>
+                <td>
+                  {{list.coupon}}
+                </td>
+                <td>
+                  {{list.isVip}}
+                </td>
+                <td>
+                  {{list.note}}
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="12">
+                  <div class="ui right floated pagination menu">
+                    <a class="icon item">
+                      <i class="left chevron icon"></i>
+                    </a>
+                    <a class="item">1</a>
+                    <a class="item">2</a>
+                    <a class="item">3</a>
+                    <a class="item">4</a>
+                    <a class="icon item">
+                      <i class="right chevron icon"></i>
+                    </a>
+                  </div>
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </div>
   </div>

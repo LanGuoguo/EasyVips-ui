@@ -1,8 +1,10 @@
+'use strict';
+
 (function() {
 
   //清除多余生成的.ui.modal，仅保留最后生成的modal
   var modals = $('.ui.modal');
-  for (var i = 0, len = modals.length; i < (len - 1); i++) {
+  for (var i = 1, len = modals.length; i < len; i++) {
     $(modals[i]).remove();
   }
 
@@ -47,39 +49,39 @@
   })
 ;
 
-$('tr.list .checkbox.child')
-  .checkbox({
-    // Fire on load to set parent value
-    fireOnInit : true,
-    // Change parent state on each child checkbox change
-    onChange   : function() {
-      var
-        $parentCheckbox = $('.first .master.checkbox'),
-        $checkbox       = $('tr.list .checkbox.child'),
-        allChecked      = true,
-        allUnchecked    = true
-      ;
-      // check to see if all other siblings are checked or unchecked
-      $checkbox.each(function() {
-        if( $(this).checkbox('is checked') ) {
-          allUnchecked = false;
-        }
-        else {
-          allChecked = false;
-        }
-      });
-      // set parent checkbox state, but dont trigger its onChange callback
-      if(allChecked) {
-        $parentCheckbox.checkbox('set checked');
-      }
-      else if(allUnchecked) {
-        $parentCheckbox.checkbox('set unchecked');
-      }
-      else {
-        $parentCheckbox.checkbox('set indeterminate');
-      }
-    }
-  })
-;
+// $('tr.list .checkbox.child')
+//   .checkbox({
+//     // Fire on load to set parent value
+//     fireOnInit : true,
+//     // Change parent state on each child checkbox change
+//     onChange   : function() {
+//       var
+//         $parentCheckbox = $('.first .master.checkbox'),
+//         $checkbox       = $('tr.list .checkbox.child'),
+//         allChecked      = true,
+//         allUnchecked    = true
+//       ;
+//       // check to see if all other siblings are checked or unchecked
+//       $checkbox.each(function() {
+//         if( $(this).checkbox('is checked') ) {
+//           allUnchecked = false;
+//         }
+//         else {
+//           allChecked = false;
+//         }
+//       });
+//       // set parent checkbox state, but dont trigger its onChange callback
+//       if(allChecked) {
+//         $parentCheckbox.checkbox('set checked');
+//       }
+//       else if(allUnchecked) {
+//         $parentCheckbox.checkbox('set unchecked');
+//       }
+//       else {
+//         $parentCheckbox.checkbox('set indeterminate');
+//       }
+//     }
+//   })
+// ;
 
 })();
