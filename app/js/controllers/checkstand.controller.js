@@ -2,13 +2,25 @@
 
 var ctrl = angular.module('checkstand.ctrl', []);
 
-ctrl.controller('CheckstandCtrl', function($scope) {
+ctrl.controller('CheckstandCtrl', function($scope, $timeout, $log, SweetAlert) {
   $.getScript('js/entrance/checkstand.list.js');
 
-  $scope.active = '';
+  $scope.payLoader = {
+    active : ''
+  };
+
+  $scope.payCancel = function() {
+    $('.ui.modal.pay').modal('toggle'); //close modal
+  }
 
   $scope.paySubmit = function() {
-    $scope.active = 'active';
+    $log.log('paySubmit entered.');
+    $scope.payLoader.active = 'active';
+    $timeout(function() {
+      SweetAlert.success('收款成功', {title: '', confirmButtonText: '好的'}); //success callback
+      $scope.payLoader.active = ''; //close loading
+      $('.ui.modal.pay').modal('toggle'); //close modal
+    }, 1000);
   };
 
   $scope.checked = [];
@@ -57,7 +69,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
 
   $scope.paymentTable.lists = [
     {
-      selected: '',
       id: 1,
       customer: 'Customer',
       phone: '12345678901',
@@ -72,7 +83,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 2,
       customer: 'Customer',
       phone: '12345678901',
@@ -87,7 +97,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 3,
       customer: 'Customer',
       phone: '12345678901',
@@ -102,7 +111,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 4,
       customer: 'Customer',
       phone: '12345678901',
@@ -117,7 +125,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 5,
       customer: 'Customer',
       phone: '12345678901',
@@ -132,7 +139,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 6,
       customer: 'Customer',
       phone: '12345678901',
@@ -147,7 +153,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 7,
       customer: 'Customer',
       phone: '12345678901',
@@ -162,7 +167,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 8,
       customer: 'Customer',
       phone: '12345678901',
@@ -177,7 +181,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 9,
       customer: 'Customer',
       phone: '12345678901',
@@ -192,7 +195,6 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       note: '--'
     },
     {
-      selected: '',
       id: 10,
       customer: 'Customer',
       phone: '12345678901',
@@ -227,6 +229,33 @@ ctrl.controller('CheckstandCtrl', function($scope) {
       this.list.selected = 'positive';
     } else {
       this.list.selected = '';
+    }
+
+    //联动 parentCheckbox
+    var
+      $parentCheckbox = $('.first .master.checkbox'),
+      $checkboxs      = $('tr.list .checkbox.child'),
+      allChecked      = true,
+      allUnchecked    = true
+    ;
+    // check to see if all other siblings are checked or unchecked
+    $checkboxs.each(function() {
+      if( $(this).checkbox('is checked') ) {
+        allUnchecked = false;
+      }
+      else {
+        allChecked = false;
+      }
+    });
+    // set parent checkbox state, but dont trigger its onChange callback
+    if(allChecked) {
+      $parentCheckbox.checkbox('set checked');
+    }
+    else if(allUnchecked) {
+      $parentCheckbox.checkbox('set unchecked');
+    }
+    else {
+      $parentCheckbox.checkbox('set indeterminate');
     }
   };
 });

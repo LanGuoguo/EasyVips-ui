@@ -3,19 +3,25 @@
 (function() {
 
   //清除多余生成的.ui.modal，仅保留最后生成的modal
-  var modals = $('.ui.modal');
-  for (var i = 1, len = modals.length; i < len; i++) {
-    $(modals[i]).remove();
-  }
+  // var modals = $('.ui.modal');
+  // for (var i = 0, len = modals.length; i < (len - 1); i++) {
+  //   $(modals[i]).remove();
+  // }
 
-  $('.ui.modal')
-    .modal({
-      inverted: true
-    })
-  ;
+  $('.overlay').visibility({
+    type: 'fixed',
+    offset: 80
+  });
 
   $('.ui.modal.pay')
     .modal('attach events', '.button.pay', 'toggle')
+  ;
+
+  $('.ui.modal')
+    .modal('setting', 'closable', false)
+    .modal({
+      inverted: true
+    })
   ;
 
   $('.ui.dropdown')
@@ -30,20 +36,28 @@
   })
   ;
 
+  $('.ui.accordion')
+    .accordion()
+  ;
+
   $('.first .master.checkbox')
   .checkbox({
     // check all children
     onChecked: function() {
       var
-        $childCheckbox  = $('tr.list').find('.checkbox.child')
+        $childCheckbox  = $('tr.list .checkbox.child'),
+        $childTr = $('tr.list')
       ;
+      $childTr.addClass('positive');
       $childCheckbox.checkbox('check');
     },
     // uncheck all children
     onUnchecked: function() {
       var
-        $childCheckbox  = $('tr.list').find('.checkbox.child')
+        $childCheckbox  = $('tr.list .checkbox.child'),
+        $childTr = $('tr.list')
       ;
+      $childTr.removeClass('positive');
       $childCheckbox.checkbox('uncheck');
     }
   })

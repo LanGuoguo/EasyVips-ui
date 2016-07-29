@@ -1,0 +1,131 @@
+<div class="ui modal pay">
+
+  <div class="ui inverted dimmer pay-loader {{payLoader.active}}">
+    <div class="ui text loader"></div>
+  </div>
+
+  <i class="close icon"></i>
+  <div class="header">
+    消费
+  </div>
+  <div class="content">
+    <div class="ui internally celled grid">
+      <div class="row">
+        <div class="six wide column">
+          <div class="ui card">
+
+            <div class="image">
+              <img src="images/card2.png">
+            </div>
+            <div class="content">
+              <div class="right floated meta">8次</div>
+              <img class="ui avatar image" src="images/avantar.png"> Elliot
+            </div>
+            <div class="content">
+              <i class="phone icon"></i>
+              12345678901
+            </div>
+            <div class="extra content">
+              <i class="yen icon"></i>
+              <div class="ui red large label">888.00</div>
+            </div>
+          </div>
+        </div>
+
+        <a class="ui red right corner label login-switch">
+          <i class="qrcode icon" style="font-size: 52px; color: #fff; left: 0; top: 0; cursor: pointer;"></i>
+        </a>
+
+        <div class="ten wide column">
+          <form class="ui form">
+
+            <h4 class="ui horizontal divider header">
+              <i class="payment icon"></i>
+              基本信息
+            </h4>
+
+            <div class="sixteen wide field">
+              <label>手机</label>
+              <div class="ui left action input">
+                <select class="ui compact selection dropdown">
+                  <option selected value="+86">+86</option>
+                </select>
+                <input type="text" placeholder="后4位或全号">
+              </div>
+            </div>
+            <div class="sixteen wide required field">
+              <label>消费金额（元）</label>
+              <div class="ui left labeled input">
+                <div class="ui basic label">
+                  <i class="yen icon"></i>
+                </div>
+                <input type="text" placeholder="消费金额(RMB)">
+              </div>
+            </div>
+            <div class="sixteen wide required field">
+              <label>收银（元）</label>
+              <div class="ui left labeled input">
+                <div class="ui basic label">
+                  <i class="yen icon"></i>
+                </div>
+                <input type="text" placeholder="收银金额(RMB)">
+              </div>
+            </div>
+            <div class="sixteen wide field">
+              <label>找零（元）</label>
+              <div class="ui left labeled input">
+                <div class="ui basic label">
+                  <i class="yen icon"></i>
+                </div>
+                <input disabled type="text" placeholder="找零金额(RMB)，自动计算">
+              </div>
+            </div>
+
+            <!-- <h4 class="ui horizontal divider header">
+              <i class="warning circle icon"></i>
+              附加信息
+            </h4> -->
+
+            <div class="ui accordion field">
+              <div class="active title">
+                <i class="icon dropdown"></i> 附加信息
+              </div>
+              <div class="active content field">
+                <div class="sixteen wide field">
+                  <label>折扣</label>
+                  <div class="ui right labeled input">
+                    <input type="text" placeholder="[0.1-9.9]">
+                    <div class="ui basic label">
+                      折
+                    </div>
+                  </div>
+                </div>
+                <div class="sixteen wide field">
+                  <label>验证码</label>
+                  <div class="ui left action input">
+                    <button class="ui basic button">
+                      <i class="talk outline icon"></i>
+                    </button>
+                    <input type="text" placeholder="短信验证码">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui animated fade basic button">
+      <div class="visible content">取消</div>
+      <div class="hidden content">
+        <i class="frown icon"></i>
+      </div>
+    </div>
+    <div class="ui yellow button" ng-click="paySubmit()">
+      <i class="smile icon"></i>
+      宝宝收下啦
+    </div>
+  </div>
+</div>
