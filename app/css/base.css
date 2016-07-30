@@ -1,3 +1,7 @@
 html {
   /*font-family: Verdana;*/
 }
+
+.ui.list .filter.icon {
+  cursor: pointer;
+}

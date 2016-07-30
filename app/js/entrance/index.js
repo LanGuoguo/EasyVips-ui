@@ -6,9 +6,9 @@
   .sidebar({
     context: $('.bottom.segment')
   })
-  .sidebar('setting', 'dimPage', false)
+  // .sidebar('setting', 'dimPage', false)
   .sidebar('setting', 'closable', false)
-  .sidebar('setting', 'transition', 'push')
+  .sidebar('setting', 'transition', 'overlay')
   .sidebar('attach events', '.menu .item.sidebar-menu')
   ;
 
@@ -27,6 +27,6 @@
 
   console.log(window.innerHeight);
   $('.ev-container')[0].style.height = $('.pusher-container')[0].style.height = (window.innerHeight - 115) + 'px';
-  // $('.pusher-container')[0].style.height = (window.innerHeight - 115) + 'px';
+  // $('.pusher-container')[0].style.height = (window.innerHeight - 115) + 'px
 
 })();

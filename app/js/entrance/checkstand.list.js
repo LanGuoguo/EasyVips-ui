@@ -7,14 +7,20 @@
   // for (var i = 0, len = modals.length; i < (len - 1); i++) {
   //   $(modals[i]).remove();
   // }
-
-  $('.overlay').visibility({
-    type: 'fixed',
-    offset: 80
-  });
+  $('.ui.list .filter.icon')
+    .popup({
+      title: '筛选',
+      content: '尚在开发中，敬请期待',
+      on    : 'hover'
+    })
+  ;
 
   $('.ui.modal.pay')
     .modal('attach events', '.button.pay', 'toggle')
+  ;
+
+  $('.ui.modal.recharge')
+    .modal('attach events', '.button.recharge', 'toggle')
   ;
 
   $('.ui.modal')
@@ -29,39 +35,39 @@
   ;
 
   $('.ui.corner.label.login-switch')
-  .popup({
-    title: '二维码付款',
-    content: '尚在开发中，敬请期待',
-    on    : 'hover'
-  })
+    .popup({
+      title: '二维码付款',
+      content: '尚在开发中，敬请期待',
+      on    : 'hover'
+    })
   ;
 
   $('.ui.accordion')
     .accordion()
   ;
 
-  $('.first .master.checkbox')
-  .checkbox({
-    // check all children
-    onChecked: function() {
-      var
-        $childCheckbox  = $('tr.list .checkbox.child'),
-        $childTr = $('tr.list')
-      ;
-      $childTr.addClass('positive');
-      $childCheckbox.checkbox('check');
-    },
-    // uncheck all children
-    onUnchecked: function() {
-      var
-        $childCheckbox  = $('tr.list .checkbox.child'),
-        $childTr = $('tr.list')
-      ;
-      $childTr.removeClass('positive');
-      $childCheckbox.checkbox('uncheck');
-    }
-  })
-;
+//   $('.first .master.checkbox')
+//   .checkbox({
+//     // check all children
+//     onChecked: function() {
+//       var
+//         $childCheckbox  = $('tr.list .checkbox.child'),
+//         $childTr = $('tr.list')
+//       ;
+//       $childTr.addClass('positive');
+//       $childCheckbox.checkbox('check');
+//     },
+//     // uncheck all children
+//     onUnchecked: function() {
+//       var
+//         $childCheckbox  = $('tr.list .checkbox.child'),
+//         $childTr = $('tr.list')
+//       ;
+//       $childTr.removeClass('positive');
+//       $childCheckbox.checkbox('uncheck');
+//     }
+//   })
+// ;
 
 // $('tr.list .checkbox.child')
 //   .checkbox({

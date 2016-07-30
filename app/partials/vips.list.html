@@ -26,22 +26,29 @@
         <div class="ui grid">
           <div class="one column row">
             <div class="column">
-              <table class="ui celled table">
+              <table class="ui striped selectable celled table">
                 <thead>
-                  <tr>
+                  <tr class="first">
                     <th class="collapsing">
-                      <div class="ui fitted slider checkbox">
+                      <div class="ui fitted slider checkbox master" ng-click="checkMaster($event)">
                         <input type="checkbox" name="list-checkbox" class="th-checkbox">
                         <label></label>
                       </div>
                     </th>
-                    <th ng-repeat="head in vipsTable.heads">{{head}}</th>
+                    <th ng-repeat="head in vipsTable.heads">
+                      <div class="ui list">
+                        <div class="item">
+                          <div class="right floated content"><i class="filter icon"></i></div>
+                          <div class="content">{{head}}</div>
+                        </div>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="list in vipsTable.lists">
+                  <tr class="list {{list.selected}}" ng-repeat="list in vipsTable.lists" ng-click="checkTr($event)">
                     <td class="collapsing">
-                      <div class="ui fitted slider checkbox">
+                      <div class="ui fitted slider checkbox child">
                         <input type="checkbox" name="list-checkbox" class="tr-checkbox">
                         <label></label>
                       </div>

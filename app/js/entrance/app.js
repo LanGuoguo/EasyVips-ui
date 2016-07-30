@@ -3,16 +3,16 @@
 var app = angular.module('evuiApp', ['ev.controller', 'vips.list.ctrl', 'checkstand.ctrl', 'ui.router', 'ng-sweet-alert']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/vips.list');
+  $urlRouterProvider.otherwise('/merchant/vips.list');
 
   $stateProvider
     .state('vips', {
-      url: '/vips.list',
+      url: '/merchant/vips.list',
       templateUrl: 'partials/vips.list.html',
       controller: 'VipsListCtrl'
     })
     .state('checkstand', {
-      url: '/checkstand',
+      url: '/merchant/checkstand',
       templateUrl: 'partials/checkstand.list.html',
       controller: 'CheckstandCtrl',
       onEnter: function() {
@@ -24,8 +24,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('valueAddedServices', {
+      url: '/system/value.added.services',
+      templateUrl: 'partials/value.added.services.html'
+    })
     .state('bugReport', {
-      url: '/bugReport',
+      url: '/system/bugReport',
       templateUrl: 'partials/bug.report.html'
     });
 });

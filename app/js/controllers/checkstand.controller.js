@@ -23,6 +23,23 @@ ctrl.controller('CheckstandCtrl', function($scope, $timeout, $log, SweetAlert) {
     }, 1000);
   };
 
+  $scope.rechargeLoader = {
+    active : ''
+  };
+
+  $scope.rechargeCancel = function() {
+    $('.ui.modal.recharge').modal('toggle'); //close modal
+  }
+
+  $scope.rechargeSubmit = function() {
+    $scope.rechargeLoader.active = 'active';
+    $timeout(function() {
+      SweetAlert.success('充值成功', {title: '', confirmButtonText: '好的'}); //success callback
+      $scope.rechargeLoader.active = ''; //close loading
+      $('.ui.modal.recharge').modal('toggle'); //close modal
+    }, 1000);
+  };
+
   $scope.checked = [];
   $scope.recharge = function() {
     // console.log('recharge entered');
@@ -58,7 +75,7 @@ ctrl.controller('CheckstandCtrl', function($scope, $timeout, $log, SweetAlert) {
     '手机',
     '余额（元）',
     '消费时间',
-    '消费金额（元）',
+    '金额（元）',
     '余额扣减（元）',
     '收银（元）',
     '找零（元）',
@@ -209,6 +226,31 @@ ctrl.controller('CheckstandCtrl', function($scope, $timeout, $log, SweetAlert) {
       note: '--'
     }
   ];
+
+  $scope.checkMaster = function($event) {
+    var
+      $target = $($event.target),
+      $master = $($event.currentTarget),
+      checked = $master.checkbox('is checked'),
+      $childCheckbox  = $('tr.list .checkbox.child')
+    ;
+
+    if($target[0] !== $master.find('input')[0]) { //click label or div return false
+      checked = !checked;
+    }
+
+    if (checked) {
+      $childCheckbox.checkbox('set checked');
+      angular.forEach($scope.paymentTable.lists, function(value, key) {
+        value.selected = 'positive';
+      });
+    } else {
+      $childCheckbox.checkbox('set unchecked');
+      angular.forEach($scope.paymentTable.lists, function(value, key) {
+        value.selected = '';
+      });
+    }
+  };
 
   $scope.checkTr = function($event) {
     //选中 OR 取消选中当前 CHECKBOX

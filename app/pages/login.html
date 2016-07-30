@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Login Example - Semantic</title>
+  <title>Login - Easy Vips - 易会员</title>
   <link rel="stylesheet" type="text/css" href="../bower_components/semantic-ui/dist/components/reset.css">
   <link rel="stylesheet" type="text/css" href="../bower_components/semantic-ui/dist/components/site.css">
 
@@ -27,8 +27,7 @@
   <link rel="stylesheet" type="text/css" href="../bower_components/semantic-ui/dist/components/icon.css">
 
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/semantic-ui/dist/components/form.js"></script>
-  <script src="../bower_components/semantic-ui/dist/components/transition.js"></script>
+  <script src="../bower_components/semantic-ui/dist/semantic.min.js"></script>
 
   <style type="text/css">
     body {
@@ -47,8 +46,12 @@
   <script>
   $(document)
     .ready(function() {
+
+
       $('.ui.form')
         .form({
+          keyboardShortcuts: false,
+          on: 'blur',
           fields: {
             mobile: {
               identifier  : 'mobile',
@@ -79,6 +82,22 @@
           }
         })
       ;
+
+      $('.button.login').on('click', function() {
+        var
+          data = $('.ui.form').form('get values', ['mobile', 'pass']);
+          info = {
+            mobile: '18767104358',
+            password: '123456'
+          }
+        ;
+        console.log(data);
+        if (data.mobile === info.mobile && data.password === info.password) {
+          window.location.href = 'http://127.0.0.1:8080/#/vips.list';
+          return;
+        }
+        alert('用户名或密码错误');
+      });
     })
   ;
   </script>
@@ -98,16 +117,16 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="mobile" placeholder="手机号码">
+            <input id="mobile" type="text" name="mobile" placeholder="手机号码">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="密码">
+            <input id="pass" type="password" name="password" placeholder="密码">
           </div>
         </div>
-        <div class="ui fluid large teal submit button">登&nbsp;&nbsp;录</div>
+        <div class="ui fluid large teal button login">登&nbsp;&nbsp;录</div>
       </div>
 
       <div class="ui error message"></div>
